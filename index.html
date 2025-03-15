@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>thoughtl</title>
+    <meta name="title" content="thoughtl">
+    <meta name="description" content="thoughtl - Digital solutions spanning development and design.">
+    <meta name="author" content="Mohamed Haddi">
+    <meta name="keywords" content="thoughtl, Mohamed Haddi, Haddi, mohamed@haddi.me, web development, software development, UI design, UX design, graphic design, Shopify, e-commerce, digital services">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://thoughtl.com/">
+    <meta property="og:title" content="thoughtl">
+    <meta property="og:description" content="thoughtl - Digital solutions spanning development and design.">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://thoughtl.com/">
+    <meta property="twitter:title" content="thoughtl">
+    <meta property="twitter:description" content="thoughtl - Digital solutions spanning development and design.">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://thoughtl.com/">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hina+Mincho&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000000; /* Medium grey background - not too dark */
+            font-family: 'Hina Mincho', serif;
+            position: relative;
+            overflow: hidden;
+            animation: backgroundLighten 3s ease-out forwards;
+            animation-delay: 1.5s;
+        }
+        
+        @keyframes backgroundLighten {
+            0% {
+                background-color: #000000;
+            }
+            100% {
+                background-color: #e0e0e0;
+            }
+        }
+        
+        /* Background video container */
+        .background-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0); /* Medium grey overlay */
+            z-index: 2;
+            animation: overlayLighten 2.5s ease-out forwards;
+            animation-delay: 3.2s;
+        }
+        
+        @keyframes overlayLighten {
+            0% {
+                background-color: rgba(0, 0, 0, 0);
+            }
+            100% {
+                background-color: rgba(224, 224, 224, 1);
+            }
+        }
+        
+        #background-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translateX(-50%) translateY(-50%);
+            opacity: 0.8;
+            filter: brightness(0.3); /* Make video much darker initially */
+            animation: fadeOutVideo 2s ease-out forwards;
+            animation-delay: 1.2s; /* Start fading after rays have spread out */
+        }
+        
+        @keyframes fadeOutVideo {
+            0% {
+                filter: brightness(0.3);
+            }
+            100% {
+                filter: brightness(1);
+            }
+        }
+        
+        .content {
+            text-align: center;
+            position: relative;
+            z-index: 4;
+        }
+        
+        h1 {
+            font-size: 5rem;
+            margin: 0;
+            padding: 0;
+            font-weight: normal;
+            position: relative;
+            opacity: 0;
+            animation: textFadeIn 1.5s ease-out forwards;
+            animation-delay: 0.3s;
+            color: #ffffff; /* White text initially */
+        }
+        
+        @keyframes textFadeIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .l-container {
+            position: relative;
+            display: inline-block;
+            color: #ffffff; /* White text initially */
+            animation: textColorTransition 0.8s ease-out forwards;
+            animation-delay: 1s; /* Match background transition timing */
+        }
+        
+        .rays-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+        }
+        
+        .rays {
+            position: absolute;
+            font-size: 5rem;
+            font-family: 'Hina Mincho', serif;
+            font-weight: normal;
+            line-height: 1;
+            right: 26px;
+            top: -20px;
+            transform-origin: 160% 75%;
+            opacity: 0;
+            text-shadow: 0 0 0px rgba(255, 204, 0, 0);
+            filter: drop-shadow(0 0 0px rgba(255, 204, 0, 0));
+        }
+        
+        /* Animation keyframes */
+        @keyframes spreadRays {
+            0% { 
+                transform: rotate(0deg);
+                opacity: 0;
+                color: #ffb700;
+                text-shadow: 0 0 10px rgba(255, 183, 0, 0.9), 0 0 20px rgba(255, 183, 0, 0.6);
+                filter: drop-shadow(0 0 3px rgba(255, 183, 0, 0.8));
+            }
+            30% {
+                opacity: 0.8;
+                color: #ffb700;
+                text-shadow: 0 0 15px rgba(255, 183, 0, 0.8), 0 0 25px rgba(255, 183, 0, 0.5);
+                filter: drop-shadow(0 0 4px rgba(255, 183, 0, 0.7));
+            }
+            60% {
+                opacity: 0.9;
+                color: #ffc800;
+                text-shadow: 0 0 10px rgba(255, 200, 0, 0.6), 0 0 15px rgba(255, 200, 0, 0.4);
+                filter: drop-shadow(0 0 2px rgba(255, 200, 0, 0.5));
+            }
+            85% {
+                color: #ffd700;
+                text-shadow: 0 0 5px rgba(255, 200, 0, 0.3), 0 0 8px rgba(255, 200, 0, 0.2);
+                filter: drop-shadow(0 0 1px rgba(255, 200, 0, 0.3));
+            }
+            100% { 
+                transform: rotate(var(--final-rotation));
+                opacity: 1;
+                color: #000000;
+                text-shadow: 0 0 0px rgba(255, 200, 0, 0);
+                filter: drop-shadow(0 0 0px rgba(255, 200, 0, 0));
+            }
+        }
+        
+        /* Dynamic ray rotation with animation */
+        .rays:nth-child(1) {
+            --final-rotation: 0deg;
+            animation: spreadRays 2s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+            animation-delay: 0.5s;
+        }
+        
+        .rays:nth-child(2) {
+            --final-rotation: 45deg;
+            animation: spreadRays 2s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+            animation-delay: 0.6s;
+        }
+        
+        .rays:nth-child(3) {
+            --final-rotation: 90deg;
+            animation: spreadRays 2s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+            animation-delay: 0.7s;
+        }
+        
+        .rays:nth-child(4) {
+            --final-rotation: 135deg;
+            animation: spreadRays 2s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+            animation-delay: 0.8s;
+        }
+        
+        .rays:nth-child(5) {
+            --final-rotation: 180deg;
+            animation: spreadRays 2s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+            animation-delay: 0.9s;
+        }
+        
+        /* Falling dot animation */
+        .dot {
+            display: inline-block;
+            position: relative;
+            opacity: 0;
+            animation: fallDot 1.3s ease-in forwards;
+            animation-delay: 1.9s; /* Start after rays have spread out */
+            transform-origin: bottom center;
+        }
+        
+        @keyframes fallDot {
+            0% {
+                opacity: 0;
+                transform: translateY(-34%) scale(1);
+                color: #ffb700;
+                text-shadow: 0 0 10px rgba(255, 183, 0, 0.9), 0 0 20px rgba(255, 183, 0, 0.6);
+                filter: drop-shadow(0 0 3px rgba(255, 183, 0, 0.8));
+            }
+            20% {
+                opacity: 0.8;
+                color: #ffb700;
+                text-shadow: 0 0 10px rgba(255, 183, 0, 0.8), 0 0 18px rgba(255, 183, 0, 0.5);
+                filter: drop-shadow(0 0 3px rgba(255, 183, 0, 0.7));
+            }
+            40% {
+                opacity: 1;
+                color: #ffc100;
+                text-shadow: 0 0 8px rgba(255, 193, 0, 0.7), 0 0 15px rgba(255, 193, 0, 0.4);
+                filter: drop-shadow(0 0 2px rgba(255, 193, 0, 0.6));
+            }
+            50% {
+                opacity: 1;
+                transform: translateY(0) scale(1.08);
+                color: #ffc800;
+                text-shadow: 0 0 6px rgba(255, 200, 0, 0.6), 0 0 12px rgba(255, 200, 0, 0.4);
+                filter: drop-shadow(0 0 2px rgba(255, 200, 0, 0.5));
+            }
+            65% {
+                opacity: 1;
+                transform: translateY(-6%) scale(0.95);
+                color: #d4b000;
+                text-shadow: 0 0 4px rgba(212, 176, 0, 0.4), 0 0 8px rgba(212, 176, 0, 0.2);
+                filter: drop-shadow(0 0 1px rgba(212, 176, 0, 0.3));
+            }
+            75% {
+                opacity: 1;
+                transform: translateY(0) scale(1.03);
+                color: #a88c00;
+                text-shadow: 0 0 2px rgba(168, 140, 0, 0.3), 0 0 4px rgba(168, 140, 0, 0.1);
+            }
+            85% {
+                opacity: 1;
+                transform: translateY(-2%) scale(0.98);
+                color: #806b00;
+                text-shadow: 0 0 1px rgba(128, 107, 0, 0.1);
+            }
+            90% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+                color: #403600;
+                text-shadow: none;
+            }
+            95% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+                color: #201b00;
+                text-shadow: none;
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+                color: #000000;
+                text-shadow: none;
+                filter: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 4rem;
+            }
+            
+            .rays {
+                font-size: 4rem;
+                right: 20px;
+                top: -16px;
+            }
+        }
+        
+        /* Prefers-reduced-motion */
+        @media (prefers-reduced-motion: reduce) {
+            body {
+                animation: none;
+                background-color: #e0e0e0;
+            }
+            
+            .video-overlay {
+                animation: none;
+                background-color: rgba(224, 224, 224, 0.7);
+            }
+            
+            #background-video {
+                display: none;
+                filter: none;
+            }
+            
+            h1 {
+                animation: none;
+                opacity: 1;
+                color: #000000;
+            }
+            
+            .text-color {
+                animation: none;
+                color: #000000;
+            }
+            
+            .rays {
+                animation: none;
+                opacity: 1;
+                color: #000000;
+                text-shadow: none;
+                filter: none;
+            }
+            
+            .dot {
+                animation: none;
+                opacity: 1;
+                color: #000000;
+            }
+            
+            .rays:nth-child(1) { transform: rotate(0deg); }
+            .rays:nth-child(2) { transform: rotate(45deg); }
+            .rays:nth-child(3) { transform: rotate(90deg); }
+            .rays:nth-child(4) { transform: rotate(135deg); }
+            .rays:nth-child(5) { transform: rotate(180deg); }
+        }
+
+        /* Text color transition */
+        .text-color {
+            animation: textColorTransition 0.8s ease-out forwards;
+            animation-delay: 1s; /* Match background transition timing */
+        }
+
+        @keyframes textColorTransition {
+            0% {
+                color: #ffffff;
+            }
+            100% {
+                color: #000000;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-container">
+        <div class="video-overlay"></div>
+        <video id="background-video" autoplay muted loop playsinline>
+            <source src="./white-cloth.mp4" type="video/mp4">
+            <!-- Fallback message if video doesn't load -->
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    
+    <div class="content">
+        <h1><span class="text-color">thought</span><span class="l-container">l
+            <div class="rays-container">
+                <span class="rays">-</span>
+                <span class="rays">-</span>
+                <span class="rays">-</span>
+                <span class="rays">-</span>
+                <span class="rays">-</span>
+            </div>
+        </span><span class="dot">.</span></h1>
+    </div>
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "thoughtl",
+        "url": "https://thoughtl.com",
+        "description": "Digital solutions spanning development and design",
+        "founder": {
+            "@type": "Person",
+            "name": "Mohamed Haddi",
+            "givenName": "Mohamed",
+            "familyName": "Haddi",
+            "email": "mohamed@haddi.me"
+        },
+        "knowsAbout": [
+            "Web Development",
+            "Software Development",
+            "UI Design",
+            "UX Design",
+            "Graphic Design",
+            "E-commerce",
+            "Shopify",
+            "Digital Services"
+        ],
+        "serviceType": [
+            "Web Development",
+            "Software Development",
+            "UI/UX Design",
+            "Graphic Design",
+            "E-commerce Solutions",
+            "Digital Services"
+        ]
+    }
+    </script>
+</body>
+</html> 
